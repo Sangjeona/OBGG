@@ -1,6 +1,8 @@
-#include <sstream>
-#include <vector>
-#include <complex>
-#include <cmath>
+#include <iostream>
+#include "OBGG.h"
 
-void OBGG ();
+int main()
+{
+  std::cout << "Our Boy is Going to Graduate" << std::endl;
+  return 0;
+}
