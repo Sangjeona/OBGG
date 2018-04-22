@@ -1,5 +1,6 @@
-#ifndef OBGG_h
-#define OBGG_h
+#include <sstream>
+#include <vector>
+#include <complex>
+#include <cmath>
 
-
-#endif /* OBGG_h */
+void OBGG ();
