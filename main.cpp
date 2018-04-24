@@ -1,8 +1,21 @@
 #include <iostream>
+#include <cstdio>
 #include "OBGG.h"
 
-int main()
+int main(int argc, char** argv)
 {
-  std::cout << "Our Boy is Going to Graduate" << std::endl;
-  return 0;
+  Matrix mtx;
+  if (argc > 1)
+    mtx = parseFile(argv[1]);
+  else
+  {
+    std::string fname = "";
+    while (fname == "")
+    {
+      printf("Enter filename: ");
+      std::getline(std::cin, fname);
+    }
+    mtx = parseFile(fname);
+  }
+  printf(printMatrix(mtx).c_str());
 }
