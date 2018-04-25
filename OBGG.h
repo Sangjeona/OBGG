@@ -9,7 +9,6 @@
 using Matrix = std::vector< std::vector<double> >;
 using Vector = std::vector<double>;
 
-void OBGG ();
 
 std::string printMatrix (Matrix mtx)
 {
@@ -50,13 +49,13 @@ Matrix parseFile (std::string fileName)
 Vector GaussElem(Matrix mtx)
 {
   Vector sol (mtx.size(), 0.0);
-  for (int i = 0; i < mtx.size(); i++)
+  for (unsigned int i = 0; i < mtx.size(); ++i)
   {
     if (mtx[i][i] == 0)
     {
       auto temp = mtx[i];
       bool check = false;
-      for (int j = i+1; j < mtx.size(); j++)
+      for (unsigned int j = i+1; j < mtx.size(); ++j)
       {
         if (mtx[j][i] != 0)
         {
@@ -72,10 +71,10 @@ Vector GaussElem(Matrix mtx)
         exit(3);
       }
     }
-    for (int j = i+1; j < mtx.size(); ++j)
+    for (unsigned int j = i+1; j < mtx.size(); ++j)
     {
       double tmp = mtx[j][i]/mtx[i][i];
-      for (int k = i; k <= mtx.size(); ++k)
+      for (unsigned int k = i; k <= mtx.size(); ++k)
         mtx[j][k] -= (mtx[i][k] * tmp);
     }
   }
@@ -94,3 +93,19 @@ Vector GaussElem(Matrix mtx)
   }
   return sol;
 }
+
+
+void OBGG (std::string fileName)
+{
+  // parse the file
+  Matrix mtx = parseFile(fileName);
+  // and print it
+  printf("Matrix:\n");
+  printf(printMatrix(mtx).c_str());
+  // and create the vector
+  Vector ans = GaussElem(mtx);
+  printf("Solution:\n");
+  for (auto & x : ans)
+    printf("%g,\t", x);
+  printf("\n");
+};
