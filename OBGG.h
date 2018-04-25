@@ -52,7 +52,6 @@ Vector GaussElem(Matrix mtx)
   Vector sol (mtx.size(), 0.0);
   for (int i = 0; i < mtx.size(); i++)
   {
-    printf("i is %i.\n", i);
     if (mtx[i][i] == 0)
     {
       auto temp = mtx[i];
@@ -69,19 +68,16 @@ Vector GaussElem(Matrix mtx)
       }
       if (check == false)
       {
-        printf("No fuck you lol.\n");
-        return sol;
+        printf("Error: No unique solution.\n");
+        exit(3);
       }
     }
     for (int j = i+1; j < mtx.size(); ++j)
     {
-      for (int k = 0; k <= mtx.size(); ++k)
-      {
-        printf("(%i,%i)\n", j, k);
-        mtx[j][k] -= mtx[i][k] * mtx[j][i] / mtx[i][i];
-      }
+      double tmp = mtx[j][i]/mtx[i][i];
+      for (int k = i; k <= mtx.size(); ++k)
+        mtx[j][k] -= (mtx[i][k] * tmp);
     }
-    printf(printMatrix(mtx).c_str());
   }
 
   for (int i = (mtx.size() - 1); i >= 0; --i)

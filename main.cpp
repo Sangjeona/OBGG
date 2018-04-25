@@ -22,7 +22,7 @@ int main(int argc, char** argv)
   
   // now print out the goddamn vector
   auto ans = GaussElem(mtx);
-  printf("Answer lol:\n");
+  printf("Solution:\n");
   for (auto & x : ans)
     printf("%g,\t", x);
   printf("\n");
