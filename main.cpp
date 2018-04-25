@@ -17,5 +17,13 @@ int main(int argc, char** argv)
     }
     mtx = parseFile(fname);
   }
+  printf("Matrix:\n");
   printf(printMatrix(mtx).c_str());
+  
+  // now print out the goddamn vector
+  auto ans = GaussElem(mtx);
+  printf("Answer lol:\n");
+  for (auto & x : ans)
+    printf("%g,\t", x);
+  printf("\n");
 }
